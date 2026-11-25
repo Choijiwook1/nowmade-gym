@@ -224,7 +224,7 @@ document.querySelectorAll("[data-img]").forEach(function(e){var u=IMG[e.dataset.
 var ck=document.getElementById("ctk"),cs=document.getElementById("cs"),dt=document.getElementById("dts"),ci=0,tk="",dd="";
 TR.forEach(function(t,i){tk+='<div class="sl" data-i="'+i+'"><div class="ph"'+(t.photo?' style="background-image:url('+t.photo+');background-size:contain;background-repeat:no-repeat;background-position:top center;background-color:#fff;"':'')+'>'+(t.photo?'':'사진')+'</div><b>'+t.name+'</b><span>'+t.role+'</span></div>';dd+='<i data-i="'+i+'"></i>'});
 ck.innerHTML=tk;dt.innerHTML=dd;
-function slide(n){ci=Math.max(0,Math.min(TR.length-1,n));var sl=ck.children,a=sl[ci],off=cs.clientWidth/2-(a.offsetLeft+a.offsetWidth/2);ck.style.transform="translateX("+off+"px)";
+function slide(n){ci=(n%TR.length+TR.length)%TR.length;var sl=ck.children,a=sl[ci],off=cs.clientWidth/2-(a.offsetLeft+a.offsetWidth/2);ck.style.transform="translateX("+off+"px)";
 for(var i=0;i<sl.length;i++){sl[i].classList.toggle("on",i===ci);sl[i].style.setProperty("--r",(i===ci?0:(i<ci?26:-26))+"deg");dt.children[i].classList.toggle("on",i===ci)}
 document.getElementById("cnt").textContent=(ci+1)+" / "+TR.length}
 document.getElementById("pv").onclick=function(){slide(ci-1)};document.getElementById("nx").onclick=function(){slide(ci+1)};
