@@ -210,12 +210,11 @@ var FOOT = [
   "facility13.jpg",
   "facility14.jpg",];
 var TR=[
-  {name:"장석환 PT팀장",role:"대회준비 · 다이어트",photo:""},
-  {name:"이진호 트레이너",role:"재활교정 · 기능성 운동",photo:""},
-  {name:"박광호 트레이너",role:"시니어 트레이닝 · 재활교정",photo:""},
-  {name:"오현석 트레이너",role:"기능성 운동 · 퍼포먼스",photo:""},
-  {name:"김예찬 트레이너",role:"대회준비 · 다이어트",photo:""},
-];
+  {name:"장석환 PT팀장",role:"대회준비 · 다이어트",photo:"trainer1.jpg"},
+  {name:"이진호 트레이너",role:"재활교정 · 기능성 운동",photo:"trainer2.jpg"},
+  {name:"박광호 트레이너",role:"시니어 트레이닝 · 재활교정",photo:"trainer3.jpg"},
+  {name:"오현석 트레이너",role:"기능성 운동 · 퍼포먼스",photo:"trainer4.jpg"},
+  {name:"김예찬 트레이너",role:"대회준비 · 다이어트",photo:"trainer5.jpg"},];
 function $(s){return document.querySelectorAll(s)}
 document.querySelectorAll("[data-k]").forEach(function(a){if(a.tagName==="A"){a.href=LINKS[a.dataset.k];if(a.dataset.k!=="tel"){a.target="_blank";a.rel="noopener"}}});
 var sel="kakao";
@@ -224,7 +223,7 @@ var g=document.getElementById("go");g.href=LINKS.kakao;g.target="_blank";g.rel="
 document.querySelectorAll("[data-img]").forEach(function(e){var u=IMG[e.dataset.img];if(u){e.style.backgroundImage="url("+u+")";e.textContent=""}});
 
 var ck=document.getElementById("ctk"),cs=document.getElementById("cs"),dt=document.getElementById("dts"),ci=0,tk="",dd="";
-TR.forEach(function(t,i){tk+='<div class="sl" data-i="'+i+'"><div class="ph"'+(t.photo?' style="background-image:url('+t.photo+')"':'')+'>'+(t.photo?'':'사진')+'</div><b>'+t.name+'</b><span>'+t.role+'</span></div>';dd+='<i data-i="'+i+'"></i>'});
+TR.forEach(function(t,i){tk+='<div class="sl" data-i="'+i+'"><div class="ph"'+(t.photo?' style="background-image:url('+t.photo+');background-size:contain;background-repeat:no-repeat;background-position:top center;background-color:#fff;"':'')+'>'+(t.photo?'':'사진')+'</div><b>'+t.name+'</b><span>'+t.role+'</span></div>';dd+='<i data-i="'+i+'"></i>'});
 ck.innerHTML=tk;dt.innerHTML=dd;
 function slide(n){ci=Math.max(0,Math.min(TR.length-1,n));var sl=ck.children,a=sl[ci],off=cs.clientWidth/2-(a.offsetLeft+a.offsetWidth/2);ck.style.transform="translateX("+off+"px)";
 for(var i=0;i<sl.length;i++){sl[i].classList.toggle("on",i===ci);sl[i].style.setProperty("--r",(i===ci?0:(i<ci?26:-26))+"deg");dt.children[i].classList.toggle("on",i===ci)}
