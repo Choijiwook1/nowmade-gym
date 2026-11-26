@@ -116,9 +116,163 @@ footer b{color:#fff;font-size:22px;font-weight:900}
 .bar a{flex:1;text-align:center;padding:12px 2px;border:2px solid var(--k);background:var(--y);font-weight:800;font-size:13px}
 .rv{opacity:0;transform:translateY(80px) rotateX(24deg) scale(.92);transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1);transform-origin:50% 100%}
 .rv.on{opacity:1;transform:none}
+/* 상단 메뉴바 & 화면 전환 스타일 */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: var(--k);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(236, 199, 102, 0.25);
+}
+.top-nav button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #ccc;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.top-nav button.active {
+  background: var(--y);
+  color: var(--k);
+  font-weight: 800;
+}
+.page-view {
+  display: none;
+}
+.page-view.active {
+  display: block;
+}
+/* 공지사항/채용공고 카드 디자인 */
+.board-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+.board-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--k);
+  margin-bottom: 24px;
+  text-align: center;
+}
+.board-card {
+  background: #fff;
+  border: 1px solid #e5dfd5;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 16px;
+}
+.board-card .badge {
+  display: inline-block;
+  background: var(--k);
+  color: var(--y);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.board-card h3 {
+  font-size: 18px;
+  color: var(--k);
+  margin-bottom: 8px;
+}
+.board-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+/* 상단 메뉴바 & 화면 전환 스타일 */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: #352f27;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(236, 199, 102, 0.25);
+}
+.top-nav button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #ccc;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.top-nav button.active {
+  background: #ecc766;
+  color: #352f27;
+  font-weight: 800;
+}
+.page-view {
+  display: none;
+}
+.page-view.active {
+  display: block;
+}
+.board-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 20px 100px;
+}
+.board-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #352f27;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.board-card {
+  background: #fff;
+  border: 1px solid #e5dfd5;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 16px;
+}
+.board-card .badge {
+  display: inline-block;
+  background: #352f27;
+  color: #ecc766;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.board-card h3 {
+  font-size: 18px;
+  color: #352f27;
+  margin-bottom: 8px;
+}
+.board-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
 </style>
 </head>
 <body>
+<nav class="top-nav">
+  <button class="active" onclick="openTab('home', this)">센터 소개</button>
+  <button onclick="openTab('notice', this)">공지사항</button>
+  <button onclick="openTab('recruit', this)">채용공고</button>
+</nav>
+
+<div id="view-home" class="page-view active">
 <header class="hd"><b>NOWMADE</b><nav><a href="#prog">상품 선택</a><a href="#loc">오시는 길</a><a class="c" href="#book">상담 신청 →</a></nav></header>
 
 <div class="big"><div class="lg" id="lg"></div><div class="b1"><h1 id="g1">NOW</h1></div><div class="b2"><h1 class="l2" id="g2">MADE</h1></div></div>
@@ -191,7 +345,53 @@ footer b{color:#fff;font-size:22px;font-weight:900}
 
 <footer><div class="w"><b>NOWMADE</b><p style="margin-top:8px">나우메이드 헬스&amp;PT 철산점 · 철산동 유일 500평 · © Nowmade Cheolsan</p></div></footer>
 <nav class="bar"><a data-k="kakao" href="#">카카오톡</a><a data-k="insta" href="#">인스타</a><a data-k="tel" href="#">전화</a><a data-k="naver" href="#">네이버예약</a></nav>
+</div>
 
+<div id="view-notice" class="page-view">
+  <div class="board-wrap">
+    <h2 class="board-title">공지사항</h2>
+
+    <div class="board-card">
+      <span class="badge">상시운영 안내</span>
+      <h3>나우메이드 헬스&amp;PT 철산점 운영시간 안내</h3>
+      <p>
+        평일 06:00 ~ 24:00 / 주말 및 공휴일 10:00 ~ 20:00 정상 운영합니다.<br>
+        <span style="color: #d93025; font-weight: 600;">- 휴무일 : 2,4째 주 일요일 휴무입니다.</span>
+      </p>
+    </div>
+
+    <div class="board-card">
+      <span class="badge">12월 운영 안내</span>
+      <h3>12월 운영시간 및 휴무일 안내</h3>
+      <p>📅 12월 주요 일정 안내<br>
+        - 정기 휴무일 (2·4주 일요일): 12월 13일(일), 12월 27일(일) 휴무<br>
+
+       <span style="color: #d93025; font-weight: 600;">- 크리스마스 (12월 25일, 금): 09:00 ~ 21:00 단축 운영 </span><br>
+       <br>
+          연말 일정과 휴무일을 미리 확인하시어<br>
+          운동 및 PT 스케줄 이용에 차질 없으시길 바랍니다.<br>
+       <br>
+          올 한 해도 건강하고 활기찬 마무리 되시길 응원합니다.<br>
+          감사합니다!</p>
+    </div>
+  </div>
+</div>
+
+<div id="view-recruit" class="page-view">
+  <div class="board-wrap">
+    <h2 class="board-title">채용공고</h2>
+
+    <div class="board-card">
+      <span class="badge">상시채용</span>
+      <h3>퍼스널 트레이너 (P.T) 정규직 / 프리랜서 모집</h3>
+      <p>
+        · 담당업무: 1:1 맞춤 트레이닝, 회원 관리, 체형 및 기능성 운동 지도<br>
+        · 우대사항: 관련 자격증 보유자, 동종업계 경력자<br>
+        · 지원방법: 이력서 이메일 접수 또는 센터 대표번호 문의
+      </p>
+    </div>
+  </div>
+</div>
 <script>
 // ▼ 연결 주소·전화번호
 var LINKS={kakao:"https://pf.kakao.com/_EYCtn",insta:"https://www.instagram.com/nowmade_fitness1/",tel:"tel:0507-1391-7883",naver:"https://map.naver.com/p/entry/place/1003902083?placePath=%2Fticket%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202611241948%26locale%3Dko%26svcName%3Dmap_pcv5%26entry%3Dbmp&c=15.00,0,0,0,dh"};
@@ -266,6 +466,18 @@ var CAT=["헬스","PT","나우핏"],gob=document.getElementById("go");
 function setCat(n){document.querySelectorAll("#xs button").forEach(function(b,i){b.classList.toggle("on",i===n)});gob.firstChild.nodeValue=CAT[n]+" 상담 · 선택한 방법으로 연결"}
 document.querySelectorAll("#xs button").forEach(function(b){b.onclick=function(){setCat(+b.dataset.x)}});
 document.querySelectorAll(".xp a").forEach(function(a){a.addEventListener("click",function(){setCat(+a.dataset.x)})});setCat(0);
+function openTab(tabName, btn) {
+  document.querySelectorAll('.page-view').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  document.querySelectorAll('.top-nav button').forEach(function(b) {
+    b.classList.remove('active');
+  });
+
+  document.getElementById('view-' + tabName).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 </body>
 </html>
